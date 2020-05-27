@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".detail.BoardGameFragment">
+
+    <data>
+        <import type="android.view.View"/>
+        <variable
+            name="vm"
+            type="com.eokman.simplebgg.presentation.detail.BoardGameViewModel" />
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#EEE"
+            android:clickable="true">
+
+            <ImageView
+                android:id="@+id/iv_cover"
+                android:layout_width="0dp"
+                android:layout_height="300dp"
+                android:background="#4D4D4D"
+                android:contentDescription="@string/cd_game_cover"
+                android:padding="8dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/ic_logo_bgg"
+                app:imageFromUrl="@{vm.boardgame.imageUrl}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_name"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="#000000"
+                android:gravity="center"
+                android:padding="8dp"
+                android:text="@{vm.boardgame.name}"
+                android:textColor="#FFFFFF"
+                android:textSize="24sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/iv_cover"
+                tools:text="BoardGameGeek" />
+
+            <TextView
+                android:id="@+id/tv_players"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text='@{vm.boardgame.minplayers+"-"+vm.boardgame.maxplayers + " Players"}'
+                android:textSize="18sp"
+                app:layout_constraintBottom_toTopOf="@+id/divider2"
+                app:layout_constraintEnd_toStartOf="@+id/divider"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_name"
+                tools:text="1-4 Players" />
+
+            <TextView
+                android:id="@+id/tv_age"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text='@{"Age:"+vm.boardgame.minage+"+"}'
+                android:textSize="18sp"
+                app:layout_constraintBottom_toTopOf="@+id/divider3"
+                app:layout_constraintEnd_toStartOf="@+id/divider"
+                app:layout_constraintStart_toStartOf="@+id/divider2"
+                app:layout_constraintTop_toBottomOf="@+id/divider2"
+                tools:text="Age:12+" />
+
+            <TextView
+                android:id="@+id/tv_playtime"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text='@{vm.boardgame.playingtime+" Min"}'
+                android:textSize="18sp"
+                app:layout_constraintBottom_toTopOf="@+id/divider2"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/divider"
+                app:layout_constraintTop_toBottomOf="@+id/tv_name"
+                tools:text="120 Min" />
+
+            <TextView
+                android:id="@+id/tv_yearpublished"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text='@{vm.boardgame.yearpublished+" Published"}'
+                android:textSize="18sp"
+                app:layout_constraintBottom_toTopOf="@+id/divider3"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/divider"
+                app:layout_constraintTop_toBottomOf="@+id/divider2"
+                tools:text="2017 Published" />
+
+            <View
+                android:id="@+id/divider"
+                android:layout_width="1dp"
+                android:layout_height="91dp"
+                android:background="#000000"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_name" />
+
+            <View
+                android:id="@+id/divider2"
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_marginTop="45dp"
+                android:background="#000000"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_name" />
+
+            <View
+                android:id="@+id/divider3"
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:background="#000000"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/divider" />
+
+            <TextView
+                android:id="@+id/tv_desc"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:fitsSystemWindows="true"
+                android:padding="16dp"
+                android:text="@{vm.boardgame.getDescriptionString()}"
+                android:textColor="#000000"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/divider3"
+                app:layout_constraintVertical_bias="0.0"
+                tools:text="Desc" />
+
+            <ProgressBar
+                style="@style/Widget.AppCompat.ProgressBar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/pb_loading"
+                android:visibility="@{vm.isLoading ? View.VISIBLE : View.GONE}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toTopOf="parent" app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+</layout>

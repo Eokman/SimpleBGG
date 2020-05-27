@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable name="boardgame" type="com.eokman.simplebgg.presentation.model.BoardGame"/>
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="110dp">
+
+        <ImageView
+            android:id="@+id/iv_cover"
+            android:layout_width="96dp"
+            android:layout_height="96dp"
+            android:layout_marginStart="16dp"
+            android:contentDescription="@string/cd_game_cover"
+            android:scaleType="fitCenter"
+            app:imageFromUrl="@{boardgame.thumbnail}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.5"
+            tools:srcCompat="@tools:sample/avatars" />
+
+        <TextView
+            android:text="@{boardgame.name}"
+            android:id="@+id/tv_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/iv_cover"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Terraforming Mars" />
+
+        <TextView
+            android:text="@{String.valueOf(boardgame.yearpublished)}"
+            android:id="@+id/tv_yearpublished"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="@+id/tv_name"
+            app:layout_constraintTop_toBottomOf="@+id/tv_name"
+            tools:text="2017" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
