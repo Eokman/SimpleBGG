@@ -20,7 +20,6 @@ class SimpleBGGRepositoryImpl(private val remoteDataSource: BGGWebDataSource, pr
                     Result.Success(list)
                 }
                 is Result.Error -> Result.Error(result.exception)
-                else -> Result.Error(Exception(""))
             }
         }
     }
@@ -32,7 +31,6 @@ class SimpleBGGRepositoryImpl(private val remoteDataSource: BGGWebDataSource, pr
                     Result.Success(result.data.toEntity())
                 }
                 is Result.Error -> Result.Error(Exception(""))
-                else -> Result.Error(Exception(""))
             }
         }
     }

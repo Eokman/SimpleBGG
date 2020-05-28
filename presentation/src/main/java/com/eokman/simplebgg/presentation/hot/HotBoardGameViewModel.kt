@@ -23,7 +23,7 @@ class HotBoardGameViewModel(private val useCase: GetHotBoardGame) : ViewModel() 
     val isLoading: LiveData<Boolean> get() = _isLoading
 
     fun getHotBoardGame() {
-        viewModelScope.launch(Dispatchers.Main) {
+        viewModelScope.launch {
             _isLoading.postValue(true)
 
             val result = useCase.get()

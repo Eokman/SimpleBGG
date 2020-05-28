@@ -25,7 +25,7 @@ fun createBGGWebApi(baseUrl: String): BGGWebApi {
     return Retrofit.Builder()
         .client(
             OkHttpClient.Builder()
-                .addInterceptor(HttpLoggingInterceptor(TestLoger()).apply {
+                .addInterceptor(HttpLoggingInterceptor().apply {
                     level = HttpLoggingInterceptor.Level.BASIC
                 })
                 .build())
@@ -33,13 +33,6 @@ fun createBGGWebApi(baseUrl: String): BGGWebApi {
         .addConverterFactory(SimpleXmlConverterFactory.create())
         .build()
         .create(BGGWebApi::class.java)
-}
-
-class TestLoger: HttpLoggingInterceptor.Logger {
-    override fun log(message: String) {
-        println(message)
-    }
-
 }
 
 enum class BGGHotItemType {

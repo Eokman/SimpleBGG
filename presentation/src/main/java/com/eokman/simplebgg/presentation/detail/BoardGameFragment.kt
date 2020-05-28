@@ -16,7 +16,6 @@ class BoardGameFragment : Fragment() {
 
         private const val ARG_BOARDGAME_ID = "id"
 
-        @JvmStatic
         fun newInstance(boardGameId: String) =
             BoardGameFragment().apply {
                 arguments = Bundle().apply {
